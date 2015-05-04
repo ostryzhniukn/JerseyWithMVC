@@ -7,5 +7,11 @@ package ostryzhniukn.JerseyWithMVC.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-public class IndexController {
+@Controller
+public class JustController {
+
+    @RequestMapping("/hi")
+    public String hi(){
+        return "hi";
+    }
 }
