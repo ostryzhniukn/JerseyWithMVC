@@ -5,13 +5,14 @@ package ostryzhniukn.JerseyWithMVC.controller;
  */
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class JustController {
 
     @RequestMapping("/hi")
-    public String hi(){
+    public String hi(String userName){
         return "hi";
     }
 }
