@@ -1,5 +1,7 @@
 package ostryzhniukn.JerseyWithMVC.resource;
 
+import ostryzhniukn.JerseyWithMVC.domain.User;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -8,9 +10,16 @@ import javax.ws.rs.core.Response;
 public class JerseyResource {
 
     @GET
-    @Path("jersey-hello")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getHello() {
+    @Produces(MediaType.APPLICATION_JSON)
+    public String jerseyIndex() {
         return "Jersey resource";
+    }
+
+    @GET
+    @Path("hello")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response jerseyHello(@QueryParam("userName") String userName) {
+        User user = new User(userName);
+        return Response.status(Response.Status.ACCEPTED).entity(user).build();
     }
 }

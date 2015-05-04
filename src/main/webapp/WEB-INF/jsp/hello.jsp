@@ -7,6 +7,6 @@
 <body>
     <a href="<c:url value="/"/>">Back</a>
     <br>
-    <h1>Hi <c:out value="${param.userName}"/>!</h1>
+    <h1>Hello <c:out value="${param.userName}"/>!</h1>
 </body>
 </html>

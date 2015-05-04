@@ -9,10 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class JustController {
+public class HelloController {
 
-    @RequestMapping("/hi")
+    @RequestMapping("/hello")
     public String hi(String userName){
-        return "hi";
+        return "hello";
     }
 }
