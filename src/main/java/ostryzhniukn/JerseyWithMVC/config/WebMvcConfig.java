@@ -10,6 +10,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -18,36 +19,25 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import java.util.Arrays;
 
 @Configuration
-@ComponentScan(basePackages = {"ostryzhniukn.JerseyWithMVC"})
+@ComponentScan(basePackages = {"ostryzhniukn.JerseyWithMVC.controller"})
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
-//	@Bean
-//	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-//		return new PropertySourcesPlaceholderConfigurer();
-//	}
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
 
-	@Bean
-	public ContentNegotiatingViewResolver contentViewResolver() throws Exception {
-		ContentNegotiationManagerFactoryBean contentNegotiationManager = new ContentNegotiationManagerFactoryBean();
-		contentNegotiationManager.addMediaType("json", MediaType.APPLICATION_JSON);
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setPrefix("/WEB-INF/jsp/");
-		viewResolver.setSuffix(".jsp");
-
-		MappingJackson2JsonView defaultView = new MappingJackson2JsonView();
-		defaultView.setExtractValueFromSingleKeyModel(true);
-
-		ContentNegotiatingViewResolver contentViewResolver = new ContentNegotiatingViewResolver();
-		contentViewResolver.setContentNegotiationManager(contentNegotiationManager.getObject());
-		contentViewResolver.setViewResolvers(Arrays.<ViewResolver> asList(viewResolver));
-		contentViewResolver.setDefaultViews(Arrays.<View> asList(defaultView));
-		return contentViewResolver;
-	}
-
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
+    @Bean
+    public InternalResourceViewResolver jspViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setPrefix("/WEB-INF/jsp/");
+        bean.setSuffix(".jsp");
+        return bean;
+    }
 }

@@ -26,19 +26,10 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
 	protected WebApplicationContext createRootApplicationContext() {
 		return null;
 	}
-	
+
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		super.onStartup(servletContext);
-
-/*        WebApplicationContext context = createServletApplicationContext();
-        // Manage the lifecycle of the root application context
-        servletContext.addListener(new ContextLoaderListener(context)); */
-
-/*		DelegatingFilterProxy filter = new DelegatingFilterProxy("springSecurityFilterChain");
-		filter.setContextAttribute("org.springframework.web.servlet.FrameworkServlet.CONTEXT.dispatcher");
-		servletContext.addFilter("springSecurityFilterChain", filter).addMappingForUrlPatterns(null, false, "/*");
-*/
 	}
-	
+
 }
