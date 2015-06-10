@@ -6,10 +6,11 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>"/>
 </head>
 <body>
-    <div id="backButton">
-        <a id="backLink" href="<c:url value="/"/>">Back</a>
-    </div>
-    <%--<br>--%>
+    <a id="backButton" href="<c:url value="/"/>">
+        <span id="backButtonCaption">
+            Back
+        </span>
+    </a>
     <div id="greeting">
         <h1>Hello <c:out value="${param.userName}"/>!</h1>
     </div>

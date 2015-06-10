@@ -1,6 +1,5 @@
 package ostryzhniukn.JerseyWithMVC.config;
 
-import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
@@ -13,13 +12,13 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
 	@Override
 	protected WebApplicationContext createServletApplicationContext() {
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.register(WebMvcConfig.class);
+        context.register(WebMvcConfig.class); // registering WebMvcConfigurerAdapter
 		return context;
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] { "/" };
+		return new String[] { "/" }; //Mapping for dispatcher servlet
 	}
 
 	@Override
