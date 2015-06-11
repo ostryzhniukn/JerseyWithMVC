@@ -8,18 +8,14 @@
 </head>
 <body>
 <form action="<c:url value="/hello"/>" method="get">
-    <%--<fieldset>--%>
         <legend>Type your name (MVC controller)</legend>
-        <input class="inputField" type="text" name="userName"/>
-        <input class="submit" type="submit">
-    <%--</fieldset>--%>
+        <input class="inputField" type="text" name="userName" value="John Doe"/>
+        <input class="submit" type="submit"/>
 </form>
 <form action="<c:url value="/rest/hello"/>" method="get">
-    <%--<fieldset>--%>
         <legend>Type your name (Jersey resource)</legend>
-        <input class="inputField" type="text" name="userName"/>
-        <input class="submit" type="submit">
-    <%--</fieldset>--%>
+        <input class="inputField" type="text" name="userName" value="Johnnie Doe" />
+        <input class="submit" type="submit"/>
 </form>
 </body>
 </html>
